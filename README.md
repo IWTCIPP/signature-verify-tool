@@ -35,15 +35,15 @@ pCti2V40jDaEcaqNr3e+WeK4kWcx/qEIo2fgEdfoMD73rskFiMqKFU7LOovHZzoZ2A9yrfUEqkr26U1m
 3Ka4N0nuo/L9+Wm2eNc3CKxhhmanVF/pJUbe5ZBw3TCwhbq2Yzm3IqqWCTqiCx2WXLqkI+4=)
 Signature is valid.
 
-$ node verify.js --message "https://github.com/IWTCIPP is me" --signature NNGwZQ
-fWlhqCQu7ZIaOLAd4Z32DpMrhAPN3/tY7crE0ftDqyrQOZzXbZ9cLRHdbbRE4Hw65+oZlYGgs9tVYLoR
-dOn0+itxgPqqiN/OAjCqrSui13COL/O7vFVKgSnfduWAt/uVeuVeR7cuCki0UrW3P/OO5mC5ejHefniA
-k1bZa0bIUfBMSCj8Ch/F14rzquShfqA0kQmiSYmK+YG5aFOsFAkFP8D1ZgPT5a7AtSt0BJI0MBZZyGA5
-3MAIqS9XlCPHy0LA/ad/nlAp+0YXWyD6K0QK1tIo7Fnj/pYho1uOJn1U1g5qVqwey9BCmnSJSgmHw80K
-KeBIlNbKcciuII2cTGqTuDNlFN3SjX1B0lwCWpk+31Q64PtK/docN8c0YQWXDQ7QW5/XP7EYiAzV3APM
-2tqvT4MeMm4PQBeMoXYJ8gOBte6Cg9Gws4T+wgAgmZyFRsmvRahdnFMJaU7+RptfhrBWtFUmy4d3Xt5m
-nedrigXRD9CFx4MqqLVPH7zzTHAlnbQomaBg1bisVB7H7cuvy6pvl+qvuKTbv4MCtZ9w6i4cgEnb863d
-TJ3mMMzXx7N77OpUpW+HU12o+mlT5Reh42CEJr/bpjwY1GqBL8LwCtKFQIzgEpWDqmT/+bPnq4ISwgos
-66YfTjJ0Hb/NzwmWlXFezJ760LF8zYBzbc3sU=
+$ node verify.js --message "https://github.com/IWTCIPP is me" --signature NNGwZ\
+> QfWlhqCQu7ZIaOLAd4Z32DpMrhAPN3/tY7crE0ftDqyrQOZzXbZ9cLRHdbbRE4Hw65+oZlYGgs9tV\
+> YLoRdOn0+itxgPqqiN/OAjCqrSui13COL/O7vFVKgSnfduWAt/uVeuVeR7cuCki0UrW3P/OO5mC5e\
+> jHefniAk1bZa0bIUfBMSCj8Ch/F14rzquShfqA0kQmiSYmK+YG5aFOsFAkFP8D1ZgPT5a7AtSt0BJ\
+> I0MBZZyGA53MAIqS9XlCPHy0LA/ad/nlAp+0YXWyD6K0QK1tIo7Fnj/pYho1uOJn1U1g5qVqwey9B\
+> CmnSJSgmHw80KKeBIlNbKcciuII2cTGqTuDNlFN3SjX1B0lwCWpk+31Q64PtK/docN8c0YQWXDQ7Q\
+> W5/XP7EYiAzV3APM2tqvT4MeMm4PQBeMoXYJ8gOBte6Cg9Gws4T+wgAgmZyFRsmvRahdnFMJaU7+R\
+> ptfhrBWtFUmy4d3Xt5mnedrigXRD9CFx4MqqLVPH7zzTHAlnbQomaBg1bisVB7H7cuvy6pvl+qvuK\
+> Tbv4MCtZ9w6i4cgEnb863dTJ3mMMzXx7N77OpUpW+HU12o+mlT5Reh42CEJr/bpjwY1GqBL8LwCtK\
+> FQIzgEpWDqmT/+bPnq4ISwgos66YfTjJ0Hb/NzwmWlXFezJ760LF8zYBzbc3sU=
 Signature is valid.
 ```
