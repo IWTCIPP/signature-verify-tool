@@ -1,9 +1,9 @@
-import { execFileSync } from "node:child_process";
+import { Buffer } from "node:buffer";
+import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
-
-class PrettyError extends Error {}
-
-
+import process, { argv } from "node:process";
+import { Readable } from "node:stream";
+import { promisify } from "node:util";
 
 try {
   const args = parseArgs();
@@ -11,32 +11,27 @@ try {
   if ("image" in args) {
     const image = await getImage(args.image);
 
-    await verifySignature(getSignature(image), removeArtist(image));
+    await verifySignature(
+      ...await Promise.all([getSignature(image), removeArtist(image)])
+    );
   }
 
   if ("message" in args) {
     await verifySignature(args.signature, Buffer.from(args.message));
   }
 } catch (e) {
-  if (e instanceof PrettyError) {
-    console.error(e.message);
+  console.error(e?.message);
 
-    process.exitCode = 1;
-  } else {
-    throw e;
-  }
+  process.exitCode = 1;
 }
 
 
 
 function parseArgs() {
-  const args = process.argv.slice(2);
+  const args = argv.slice(2);
 
-  if (
-    args.length === 2 &&
-    /^(-i|--image)$/.test(args[0])
-  ) {
-    return { image: args[1] };
+  if (args.length === 1) {
+    return { image: args[0] };
   }
 
   if (
@@ -55,7 +50,7 @@ function parseArgs() {
     return { signature: args[1], message: args[3] };
   }
 
-  throw new PrettyError("Invalid arguments.");
+  throw new Error("Invalid arguments.");
 }
 
 async function getImage(arg) {
@@ -65,7 +60,7 @@ async function getImage(arg) {
     const response = await fetch(arg);
 
     if (!response.ok) {
-      throw new PrettyError(`Request failed. Status code: ${response.status}.`);
+      throw new Error(`Request failed. Status code: ${response.status}.`);
     }
 
     if (response.headers.has("last-modified")) {
@@ -78,30 +73,46 @@ async function getImage(arg) {
   return readFile(arg);
 }
 
-function getSignature(image) {
-  const artist = getArtist(image);
+async function getSignature(image) {
+  const artist = await getArtist(image);
 
   console.log(`Artist: ${artist}`);
 
   const match = artist.match(/\(signature: ([A-Za-z0-9+/=]+)\)$/);
 
   if (!match) {
-    throw new PrettyError("Failed to extract signature.");
+    throw new Error("Failed to extract signature.");
   }
 
   return match[1];
 }
 
-function getArtist(image) {
-  return exiftool(["-artist", "-b", "-"], image).toString();
+async function getArtist(image) {
+  return (await exiftool(["-artist", "-b", "-"], image)).toString();
 }
 
 function removeArtist(image) {
   return exiftool(["-artist=", "-"], image);
 }
 
-function exiftool(args, input) {
-  return execFileSync("exiftool", args, { input, maxBuffer: Infinity });
+async function exiftool(args, input) {
+  const promise = promisify(execFile)(
+    "exiftool",
+    args,
+    {
+      encoding: "buffer",
+      maxBuffer: Infinity
+    }
+  );
+
+  const readable = new Readable();
+
+  readable.push(input);
+  readable.push(null);
+
+  readable.pipe(promise.child.stdin);
+
+  return (await promise).stdout;
 }
 
 async function verifySignature(signature, data) {
