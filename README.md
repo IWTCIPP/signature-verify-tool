@@ -9,7 +9,7 @@ It requires [Node.js](https://nodejs.org/) and, if verifying signatures on image
 ## Usage Examples
 
 ```shellsession
-$ node verify.js --image https://files.catbox.moe/xvws5b.jpg
+$ node verify.js https://files.catbox.moe/xvws5b.jpg
 Downloading https://files.catbox.moe/xvws5b.jpg...
 Last modified: Tue, 31 Dec 2024 20:15:21 GMT
 Artist: IWTCIPP (signature: EB+yOtwoM4ftj9Vze8Zj/l6EVFWxtZy8hqDxaYUtUjs5bjc9QxEm
@@ -23,7 +23,7 @@ S4J+nO6BW7SEpo5doP13C7CEQZvxEsvnU46+GQesj+tERXhbPrtHwlUGaBIG2WEUzyIYwvP7hf32ASy3
 mqXHMTRfONPAK/u9aX9gDDvKJ2Odtkm/p/fTiNGi2UEWgM3bfComIPs+TqcMoUNbwLDh3TE=)
 Signature is valid.
 
-$ node verify.js --image ydv1k6.jpg
+$ node verify.js ydv1k6.jpg
 Artist: IWTCIPP (signature: MXh/+ApogqZm0Go6rdRsOt4JgeMq1PC0A0acKMW9Gwk/BOxjx/+I
 Xq/WI6A+Jn2rgiCXxHuQ8kX1/w+1awa037XI9+nqmzUK5vvx+1YZBcQKM6EjWTSb+qkAgX7LjViFZNns
 QpEygUnU61BbXcW0dqEr3lbtxoM2vGPx6S160AWsdUC9NwwKjzL4aS9xUxnSUxN7le6hxm/0CstaYBBw
